@@ -1,4 +1,4 @@
-# mytv-app
+# devidian-tv-app
 
 ## Project setup
 ```
