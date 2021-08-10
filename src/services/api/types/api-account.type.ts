@@ -1,3 +1,5 @@
+import { AccountDto } from './account.dto';
+
 export type API_ACCOUNT = {
-	getAccount(): any; // TODO AccountEntity
+	getAccount(): AccountDto;
 };
