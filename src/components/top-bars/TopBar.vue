@@ -8,7 +8,10 @@
 		</div>
 		<div id="account">
 			<button @click="loginWithSteam()" v-if="!isLoggedIn">Login with Steam</button>
-			<account-small v-if="isLoggedIn" :account="account" />
+			<router-link :to="{ name: 'MyChannels' }">
+				<account-small v-if="isLoggedIn" :account="account" />
+			</router-link>
+			<button @click="logout()" v-if="isLoggedIn">Logout</button>
 		</div>
 	</div>
 </template>
@@ -19,6 +22,7 @@ import { StoreType } from '@/store';
 import { computed, defineComponent, inject } from 'vue';
 import { useStore } from 'vuex';
 import AccountSmall from '@/components/AccountSmall.vue';
+import { ActionTypes } from '@/store/actions';
 
 export default defineComponent({
 	name: 'TopBar',
@@ -36,6 +40,9 @@ export default defineComponent({
 			isLoggedIn: computed(() => {
 				return !!account.value;
 			}),
+			logout: () => {
+				$store.dispatch(ActionTypes.LogoutAccount);
+			},
 			loginWithSteam,
 		};
 	},
@@ -53,6 +60,9 @@ export default defineComponent({
 	#account {
 		padding-right: 10px;
 		display: flex;
+		button {
+			margin-left: 10px;
+		}
 	}
 	#nav {
 		display: flex;

@@ -1,7 +1,7 @@
 <template>
 	<div class="streamer-live-player">
 		<h1>{{ streamer }}</h1>
-		<video ref="livePlayer" class="video-js">
+		<video ref="livePlayerRef" class="video-js">
 			<source :src="videoSrc" type="application/vnd.apple.mpegurl" />
 		</video>
 	</div>
@@ -22,7 +22,7 @@ export default defineComponent({
 		},
 	},
 	setup(props) {
-		const livePlayerRef = ref<HTMLVideoElement>();
+		const livePlayerRef = ref<HTMLVideoElement | null>(null);
 		const player = ref<VideoJsPlayer>();
 
 		onMounted(() => {
