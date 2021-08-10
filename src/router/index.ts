@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
 				// which is lazy-loaded when the route is visited.
 				component: () => import(/* webpackChunkName: "streamer-livepage" */ '../views/Live.vue'),
 			},
+			{
+				path: 'me/channels',
+				name: 'MyChannels',
+				component: () => import(/* webpackChunkName: "streamer-livepage" */ '../views/me/Channels.vue'),
+			},
 		],
 	},
 ];
