@@ -1,11 +1,13 @@
+import { AccountDto } from '@/services/api/types/account.dto';
+
 export type AppState = {
-	userAccount: {
-		[key: string]: any;
-	};
+	userAccount: AccountDto | null;
+	myChannels: any[];
 };
 
 export default function (): AppState {
 	return {
-		userAccount: {},
+		userAccount: null,
+		myChannels: [],
 	};
 }
