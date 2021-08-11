@@ -9,21 +9,18 @@
 
 <script lang="ts">
 import videojs, { VideoJsPlayer } from 'video.js';
-import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue';
-require('videojs-hls-quality-selector');
-require('videojs-contrib-quality-levels');
+import { defineComponent, onBeforeUnmount, onMounted, Ref, ref } from 'vue';
 
 export default defineComponent({
 	name: 'LivePlayer',
 	props: {
 		streamer: {
 			type: String,
-			default: () => 'mytvuser',
 		},
 	},
 	setup(props) {
-		const livePlayerRef = ref<HTMLVideoElement | null>(null);
-		const player = ref<VideoJsPlayer>();
+		const livePlayerRef: Ref<HTMLVideoElement | null> = ref(null);
+		const player: Ref<VideoJsPlayer | null> = ref(null);
 
 		onMounted(() => {
 			player.value = videojs(
@@ -37,7 +34,7 @@ export default defineComponent({
 					controls: true,
 					controlBar: {
 						// currentTimeDisplay: true,
-						// durationDisplay: true,
+						durationDisplay: true,
 					},
 					html5: {
 						vhs: {
@@ -54,7 +51,7 @@ export default defineComponent({
 					},
 				},
 				function onPlayerReady() {
-					// console.log('onPlayerReady', this);
+					(player.value as VideoJsPlayer).hlsQualitySelector({ displayCurrentQuality: true });
 				},
 			);
 		});

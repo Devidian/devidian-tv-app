@@ -4,13 +4,13 @@
 		<div id="nav">
 			<!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
-			<router-link to="/streamer/mytvuser/live">LiveTest</router-link>
+			<router-link to="/ch/Test001">Test001</router-link>
 		</div>
 		<div id="account">
 			<button @click="loginWithSteam()" v-if="!isLoggedIn">Login with Steam</button>
-			<router-link :to="{ name: 'MyChannels' }">
-				<account-small v-if="isLoggedIn" :account="account" />
-			</router-link>
+			<n-dropdown @select="handleUserMenuSelection" :options="userNavOptions" v-if="isLoggedIn">
+				<account-small :account="account" />
+			</n-dropdown>
 			<button @click="logout()" v-if="isLoggedIn">Logout</button>
 		</div>
 	</div>
@@ -19,23 +19,45 @@
 <script lang="ts">
 import { API } from '@/services/api/types';
 import { StoreType } from '@/store';
-import { computed, defineComponent, inject } from 'vue';
+import { computed, defineComponent, inject, h } from 'vue';
 import { useStore } from 'vuex';
 import AccountSmall from '@/components/AccountSmall.vue';
 import { ActionTypes } from '@/store/actions';
+import { DropdownOption, NDropdown, NIcon } from 'naive-ui';
+import { Channel16Regular as ChannelIcon } from '@vicons/fluent';
+import { useRouter } from 'vue-router';
+
+const renderIcon = (icon: any) => {
+	return () => {
+		return h(NIcon, null, {
+			default: () => h(icon),
+		});
+	};
+};
 
 export default defineComponent({
 	name: 'TopBar',
-	components: { AccountSmall },
+	components: { AccountSmall, NDropdown },
 	props: {},
 	setup() {
 		const $store = useStore<StoreType>();
+		const $router = useRouter();
 		const account = computed(() => $store.getters.getAccount);
 		const $api = inject<API>('$api');
 		const loginWithSteam = () => {
 			$api?.auth.loginWithSteam();
 		};
+
+		const userNavOptions: DropdownOption[] = [
+			{
+				label: 'My Channels',
+				key: 'channels',
+				icon: renderIcon(ChannelIcon),
+			},
+		];
+
 		return {
+			userNavOptions,
 			account,
 			isLoggedIn: computed(() => {
 				return !!account.value;
@@ -44,6 +66,16 @@ export default defineComponent({
 				$store.dispatch(ActionTypes.LogoutAccount);
 			},
 			loginWithSteam,
+			handleUserMenuSelection(key: string) {
+				switch (key) {
+					case 'channels':
+						$router.push({ name: 'MyChannels' });
+						break;
+
+					default:
+						break;
+				}
+			},
 		};
 	},
 });

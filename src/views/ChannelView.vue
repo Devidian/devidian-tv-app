@@ -10,7 +10,7 @@ import { defineComponent } from 'vue';
 import LivePlayer from '@/components/LivePlayer.vue'; // @ is an alias to /src
 
 export default defineComponent({
-	name: 'Live',
+	name: 'ChannelView',
 	props: {
 		name: { type: String },
 	},

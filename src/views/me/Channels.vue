@@ -6,7 +6,7 @@
 			<button @click="addChannel()" :disabled="!isFormValid">Add channel</button>
 		</div>
 		<div class="flex-library">
-			<div v-for="channel in channelList" :key="channel.id">{{ channel.name }}</div>
+			<StreamerChannelCard v-for="channel in channelList" :key="channel.id" :channel="channel" />
 		</div>
 	</div>
 </template>
@@ -14,11 +14,12 @@
 <script lang="ts">
 import { API } from '@/services/api/types';
 import { defineComponent, inject, onMounted, Ref, ref } from 'vue';
+import StreamerChannelCard from '@/components/items/StreamerChannelCard.vue';
 
 export default defineComponent({
 	name: 'MyChannels',
 	props: {},
-	components: {},
+	components: { StreamerChannelCard },
 	setup() {
 		const inputChannelNameRef: Ref<HTMLInputElement | null> = ref(null);
 		const $api = inject<API>('$api');
@@ -53,15 +54,12 @@ export default defineComponent({
 <style lang="scss">
 .flex-library {
 	display: flex;
-	background-color: lime;
+	// background-color: lime;
 	margin: 10px;
 
 	& > * {
 		margin: 5px;
 		padding: 5px;
-		background-color: rgba($color: #000000, $alpha: 0.4);
-		flex-grow: 1;
-		display: flex;
 	}
 }
 </style>

@@ -1,4 +1,4 @@
-import { AccountDto } from '@/services/api/types/account.dto';
+import { AccountDto } from '@/services/api/dtos/account.dto';
 
 export type AppState = {
 	userAccount: AccountDto | null;
