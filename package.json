@@ -28,6 +28,7 @@
     "@types/videojs-hls-quality-selector": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
+    "@vicons/fluent": "^0.11.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -45,10 +46,12 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
     "lint-staged": "^9.5.0",
+    "naive-ui": "^2.16.2",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
+    "vfonts": "^0.1.0",
     "vue-jest": "^5.0.0-0"
   },
   "gitHooks": {
