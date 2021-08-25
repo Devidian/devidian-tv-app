@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'MyChannels',
 				component: () => import(/* webpackChunkName: "streamer-livepage" */ '../views/me/Channels.vue'),
 			},
+			{
+				path: '/',
+				name: 'Home',
+				component: () => import(/* webpackChunkName: "streamer-livepage" */ '../views/Home.vue'),
+			},
 		],
 	},
 	{
