@@ -1,0 +1,31 @@
+{
+	"global": {
+		"form": {
+			"action": {
+				"login": "Login",
+				"logout": "Logout"
+			}
+		},
+		"testing": {
+			"language": "Auf deutsch wechseln"
+		}
+	},
+	"me": {
+		"channel": {
+			"form": {
+				"action": {
+					"add": "Create a channel"
+				}
+			},
+			"label": {
+				"streamkey": "Stream key",
+				"title": "My Channels"
+			},
+			"message": {
+				"clipboard": {
+					"success": "Copied successfully to the clipboard"
+				}
+			}
+		}
+	}
+}

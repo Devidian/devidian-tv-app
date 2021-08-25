@@ -1,0 +1,31 @@
+{
+	"global": {
+		"form": {
+			"action": {
+				"login": "Einloggen",
+				"logout": "Ausloggen"
+			}
+		},
+		"testing": {
+			"language": "Switch to english"
+		}
+	},
+	"me": {
+		"channel": {
+			"form": {
+				"action": {
+					"add": "Kanal erstellen"
+				}
+			},
+			"label": {
+				"streamkey": "Stream-Schlüssel",
+				"title": "Meine Kanäle"
+			},
+			"message": {
+				"clipboard": {
+					"success": "Erfolgreich in Zwischenablage kopiert"
+				}
+			}
+		}
+	}
+}
