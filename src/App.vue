@@ -1,8 +1,11 @@
 <template>
-	<router-view />
+	<n-message-provider>
+		<router-view />
+	</n-message-provider>
 </template>
 
 <script lang="ts">
+import { NMessageProvider } from 'naive-ui';
 import { computed, defineComponent, inject, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
@@ -10,7 +13,9 @@ import { API } from './services/api/types';
 import { removeLocalSessionToken, setLocalSessionToken } from './services/local-session';
 import { StoreType } from './store';
 import { ActionTypes } from './store/actions';
+
 export default defineComponent({
+	components: { NMessageProvider },
 	setup() {
 		const $store = useStore<StoreType>();
 		const router = useRouter();

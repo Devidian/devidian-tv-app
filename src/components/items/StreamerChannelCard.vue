@@ -1,12 +1,17 @@
 <template>
 	<n-card>
 		{{ channel.name }}
+		<span>{{ t('me.channel.label.streamkey') }}</span
+		><button @click="copyStreamKeyToClipboard()">copy stream key</button>
 	</n-card>
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { NCard } from 'naive-ui';
 import { ChannelDto } from '@/services/api/dtos/channel.dto';
+import { useI18n } from 'vue-i18n';
+import { useMessage } from 'naive-ui';
+
 export default defineComponent({
 	name: 'StreamerChannelCard',
 	components: {
@@ -16,9 +21,16 @@ export default defineComponent({
 		channel: Object as PropType<ChannelDto>,
 	},
 	setup(props) {
-		//
+		const { t } = useI18n();
+		const msg = useMessage();
 
-		return {};
+		return {
+			t,
+			copyStreamKeyToClipboard: () => {
+				navigator.clipboard.writeText(props.channel?.streamKey || '');
+				msg.success(t('me.channel.message.clipboard.success'));
+			},
+		};
 	},
 });
 </script>
