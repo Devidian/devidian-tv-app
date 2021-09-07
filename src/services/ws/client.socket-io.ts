@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 
 const isDev = localStorage.getItem('isDev') == '1';
 
-const socket = io(process.env.VUE_APP_WS_URI, {
+const socket = io(process.env.VUE_APP_WS_URI || '', {
 	withCredentials: true,
 });
 

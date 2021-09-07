@@ -1,7 +1,6 @@
 <template>
 	<div class="streamer-live-player">
-		<h1>{{ streamer }}</h1>
-		<video ref="livePlayerRef" class="video-js">
+		<video ref="livePlayerRef" class="video-js container">
 			<source :src="videoSrc" type="application/vnd.apple.mpegurl" />
 		</video>
 	</div>
@@ -27,7 +26,7 @@ export default defineComponent({
 				livePlayerRef.value as HTMLVideoElement,
 				{
 					// liveui: true,
-					fluid: true,
+					// fluid: true,
 					fill: true,
 					responsive: true,
 					autoplay: true,
@@ -51,7 +50,7 @@ export default defineComponent({
 					},
 				},
 				function onPlayerReady() {
-					(player.value as VideoJsPlayer).hlsQualitySelector({ displayCurrentQuality: true });
+					// (player.value as VideoJsPlayer).hlsQualitySelector({ displayCurrentQuality: true });
 				},
 			);
 		});
@@ -84,5 +83,16 @@ li {
 }
 a {
 	color: #42b983;
+}
+
+.streamer-live-player {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	.video-js {
+		position: static;
+	}
 }
 </style>

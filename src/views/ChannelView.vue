@@ -1,6 +1,5 @@
 <template>
 	<div class="live-player">
-		<h1>Live stream</h1>
 		<LivePlayer :streamer="name" />
 	</div>
 </template>
@@ -19,4 +18,9 @@ export default defineComponent({
 	},
 });
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.live-player {
+	height: calc(100vh - 128px);
+	position: relative;
+}
+</style>
